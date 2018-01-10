@@ -1,5 +1,5 @@
 
-%% Creating H5File
+%% Creating H5File (converting)
 clear
 clc
 filename = 'DB23_5min_res_2016';
@@ -32,3 +32,4 @@ for i = 1:length(Files);
         
     end
 end
+
