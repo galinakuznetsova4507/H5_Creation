@@ -1,7 +1,7 @@
 %% Setup
 
 FileName     = 'Example_FileFor_h5';
-num_instance = 1000;
+num_instance = 100000;
 rng(0);
 
 %% File creation
