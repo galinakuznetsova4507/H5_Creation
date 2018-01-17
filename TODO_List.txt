@@ -1,1 +1,2 @@
-1. Nothing, relax
+1. Add a ReadMe File and fill it with a description of the Code
+2. Check the directory Create_h5_file, i add some Code and wrote you some TODOs.
