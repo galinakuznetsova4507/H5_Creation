@@ -11,7 +11,7 @@
 clear; clc
 
 %% Setup
-Input__filename = 'DB23_5min_res_2016';
+Input__filename = 'Example_FileFor_h5';
 Output_filename = 'Example_File.h5';
 
 %% Check if file exists
