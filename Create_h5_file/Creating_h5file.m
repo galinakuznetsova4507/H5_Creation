@@ -1,7 +1,9 @@
 %% TODO: 
-%   *Short discription
+%   The script is intended to converting a database to H5 format
+%   (hierarchical, filesystem-like data format). 
 %   *Maybe create a function of this script
-%   *Add Authors
+%   Authors: Robert Brandalik, M.Sc. 
+%            Galina Kuznetsova
 %   *Check if you satisfied with the comments in the Code. Be critical,
 %   you can use your GitHub repository to show some future employer what
 %   you did during your HiWi-Task. But stop at the point you feel annoyed 
@@ -15,9 +17,9 @@ Input__filename = 'Example_FileFor_h5';
 Output_filename = 'Example_File.h5';
 
 %% Check if file exists
-if isfile(Output_filename)
-    delete(Output_filename)     % TODO: Ask the user if he want to delete the file
-end
+% if isfile(Output_filename)
+%     delete(Output_filename)     % TODO: Ask the user if he want to delete the file
+% end
 
 %% Read in Input File
 data     = load(Input__filename);                                            % loading mat-file
@@ -36,7 +38,9 @@ for k_T = 1 : numel(TabInDB)                                             	 % ove
         values   = table_val.(k_V);                                        	 % values of one column   
         if isnumeric(values)                                                 % TODO: only double values right now?
             type_id  = H5T.copy('H5T_NATIVE_DOUBLE');
-            h5_dims  = fliplr(size(values));                                 	 % TODO: Explain why fliplr?
+            h5_dims  = fliplr(size(values));                                 	 % The HDF5 library uses C-style ordering 
+                                                                                 % for multidimensional arrays, while MATLAB 
+                                                                                 % uses FORTRAN-style ordering(see C vs Fortran memory order)
             space_id = H5S.create_simple(2,h5_dims,h5_dims);                     % create a new data space
             dset     = H5D.create(group,heading,type_id,space_id,'H5P_DEFAULT'); % create new Dataset for all values
             H5S.close(space_id);
