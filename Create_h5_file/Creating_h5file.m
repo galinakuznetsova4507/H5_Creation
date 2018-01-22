@@ -17,9 +17,9 @@ Input__filename = 'Example_FileFor_h5';
 Output_filename = 'Example_File.h5';
 
 %% Check if file exists
-% if isfile(Output_filename)
-%     delete(Output_filename)     % TODO: Ask the user if he want to delete the file
-% end
+if exist(Output_filename,'file')
+    delete(Output_filename)             % TODO: Ask the user if he want to delete the file
+end
 
 %% Read in Input File
 data     = load(Input__filename);                                            % loading mat-file
