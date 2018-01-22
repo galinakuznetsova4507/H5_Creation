@@ -2,7 +2,7 @@
 %   The script is intended to converting a database to H5 format
 %   (hierarchical, filesystem-like data format). 
 %   *Maybe create a function of this script
-%   Authors: Robert Brandalik, M.Sc. 
+%   Authors: Robert Brandalik 
 %            Galina Kuznetsova
 %   *Check if you satisfied with the comments in the Code. Be critical,
 %   you can use your GitHub repository to show some future employer what
