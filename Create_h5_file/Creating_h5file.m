@@ -18,10 +18,10 @@ if exist(Output_filename,'file')
     if strcmp (m,'Yes') == 1                                               % to delete the old H5 file
     delete(Output_filename);
             else
-            disp ('Please rename the old H5 file');                        % Rename the file and run the code again
-            return
+            disp ('Please rename the old H5 file');                        % Rename the file 
+            return                                                         % stop the run of code
     end
-end
+end                                                                        % After the file is renamed, run the code again
                 
 %% Read in Input File
 data     = load(Input__filename);                                            % loading mat-file
