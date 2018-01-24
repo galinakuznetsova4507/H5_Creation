@@ -1,16 +1,12 @@
-%% TODO: 
 %   The script is intended to converting a database to H5 format
 %   (hierarchical, filesystem-like data format). 
 %   *Maybe create a function of this script
 %   Authors: Robert Brandalik 
 %            Galina Kuznetsova
-%   *Check if you satisfied with the comments in the Code. Be critical,
-%   you can use your GitHub repository to show some future employer what
-%   you did during your HiWi-Task. But stop at the point you feel annoyed 
-%   with commenting.
 
 %% Clear start
-clear; clc
+clear all; 
+clc
 
 %% Setup
 Input__filename = 'Example_FileFor_h5';
@@ -18,9 +14,15 @@ Output_filename = 'Example_File.h5';
 
 %% Check if file exists
 if exist(Output_filename,'file')
-    delete(Output_filename)             % TODO: Ask the user if he want to delete the file
+    m = input('Do you want to delete the old H5 file, Yes/No: ','s');      % Asking user if it is necessary 
+    if strcmp (m,'Yes') == 1                                               % to delete the old H5 file
+    delete(Output_filename);
+            else
+            disp ('Please rename the old H5 file');                        % Rename the file and run the code again
+            return
+    end
 end
-
+                
 %% Read in Input File
 data     = load(Input__filename);                                            % loading mat-file
 Database = data.(cell2mat(fields(data)));                                    % call the loaded file 'Database'
