@@ -1,6 +1,23 @@
-filename = 'DB23_5min.h5';
-info = h5info(filename);
-% level2 = info.Groups(2);
-A = h5read('DB23_5min.h5',[info.Groups(2).Name,'/',info.Groups(2).Datasets(1).Name]);
-plot(A)
- 
+%% Clear start
+
+clear; close; clc
+
+%% Read in h5 file
+
+path_split  = strsplit(cd,'\');
+addpath      ([strjoin(path_split,'\'),'\Subfunctions\']);
+    
+h5_input.path = [strjoin(path_split(1:end),'\'),'\h5_files\'];
+h5_files_name = struct2table(dir(h5_input.path));
+h5_files_name = h5_files_name.name(h5_files_name.isdir ~= 1);   % Only files
+
+All_Files = struct;                                  % Initial struct file
+for k = 1 : numel(h5_files_name)                     % Over all files
+    k_file_name   = strsplit(h5_files_name{k},'.');  % Without extension
+    h5_input.name = k_file_name{1};                  % File Name
+    h5table       = h5_2struct(h5_input);            % Read file as table
+    All_Files.(k_file_name{1}) = h5table;            % Save table as struct field
+    disp([num2str(k),'. File was read in.']);        % Info message
+end
+
+
