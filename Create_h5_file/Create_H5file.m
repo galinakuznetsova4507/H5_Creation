@@ -1,14 +1,14 @@
 function Create_H5file(Output_filename, Database)
 %% Check if file exists
 if exist(Output_filename,'file')
-    m = input('Do you want to delete the old H5 file, Yes/No: ','s');      % Asking user if it is necessary 
-    if strcmp (m,'Yes') == 1                                               % to delete the old H5 file
+    m = input('Do you want to delete the old H5 file, Yes/No: ','s');       % Asking user if it is necessary 
+    if strcmp (m,'Yes') == 1                                                % to delete the old H5 file
     delete(Output_filename);
             else
-            disp ('Please rename the old H5 file');                        % Rename the file 
-            return                                                         % stop the run of code
+            disp ('Please rename the old H5 file');                         % Rename the file 
+            return                                                          % stop the run of code
     end
-end                                                                        % After the file is renamed, run the code again
+end                                                                         % After the file is renamed, run the code again
    
 
 %% Read in Input File
